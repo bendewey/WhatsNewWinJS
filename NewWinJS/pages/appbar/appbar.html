@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>AppBar</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="/css/default.css" rel="stylesheet" />
+    <link href="/pages/appbar/appbar.css" rel="stylesheet" />
+    <script src="/pages/appbar/appbar.js"></script>
+</head>
+<body>
+    <!-- The content that will be loaded and displayed. -->
+    <div class="fragment appbarpage">
+        <header id="header" aria-label="Header content" role="banner">
+            <button data-win-control="WinJS.UI.BackButton"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">AppBar Custom Content Type</span>
+            </h1>
+        </header>
+        <section id="content" aria-label="Main content" role="main">
+            <div class="container">
+                <div class="democontent">
+                    <h2>Custom AppBar Content</h2>
+                    <p>(swipe or right click to display)</p>
+                    
+                    <!-- Create AppBar -->
+                    <!-- BEGINTEMPLATE: Template code for an AppBar -->
+                    <div id="customContentAppBar" data-win-control="WinJS.UI.AppBar">
+                        <div data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ id: 'list', type: 'content', section: 'selection', firstElementFocus:select('.dessertType'), lastElementFocus:select('.dessertType') }">
+                            <select class="dessertType">
+                                <option>Baked</option>
+                                <option>Fried</option>
+                                <option>Frozen</option>
+                                <option>Chilled</option>
+                            </select>
+                        </div>
+                        <div tabindex="-1" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ id: 'banana', type: 'content', section: 'selection' }">
+                            <img src="/images/40Banana.png" />
+                        </div>
+                        <div data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ id: 'search', type: 'content', section: 'selection' }">
+                            <input type="text" value="Search for desserts." />
+                        </div>
+                        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ id: 'cmdAdd', label: 'Add', icon: 'add', tooltip: 'Add a recipe' }"></button>
+                        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ id: 'cmdFavorites', label: 'Favorites', icon: 'favorite', tooltip:'Favorites' }"></button>
+                    </div>
+                    <!-- ENDTEMPLATE -->
+
+                </div>
+                <hr />
+                <div class="codecontent">
+                    <h2>appbar.html</h2>
+                    <pre class="prettyprint">
+&lt;div id="customContentAppBar" data-win-control="WinJS.UI.AppBar"&gt;
+	&lt;div data-win-control="WinJS.UI.AppBarCommand" 
+		data-win-options="{ id: 'list', type: 'content', section: 'selection', 
+			firstElementFocus:select('.dessertType'), lastElementFocus:select('.dessertType') }"&gt;
+		&lt;select class="dessertType"&gt;
+			&lt;option&gt;Baked&lt;/option&gt;
+			&lt;option&gt;Fried&lt;/option&gt;
+			&lt;option&gt;Frozen&lt;/option&gt;
+			&lt;option&gt;Chilled&lt;/option&gt;
+		&lt;/select&gt;
+	&lt;/div&gt;
+	&lt;div tabindex="-1" data-win-control="WinJS.UI.AppBarCommand" 
+		data-win-options="{ id: 'banana', type: 'content', section: 'selection' }"&gt;
+		&lt;img src="/images/40Banana.png" /&gt;
+	&lt;/div&gt;
+	&lt;div data-win-control="WinJS.UI.AppBarCommand" 
+		data-win-options="{ id: 'search', type: 'content', section: 'selection' }"&gt;
+		&lt;input type="text" value="Search for desserts." /&gt;
+	&lt;/div&gt;
+	&lt;button data-win-control="WinJS.UI.AppBarCommand" 
+		data-win-options="{ id: 'cmdAdd', label: 'Add', 
+			icon: 'add', tooltip: 'Add a recipe' }"&gt;&lt;/button&gt;
+	&lt;button data-win-control="WinJS.UI.AppBarCommand" 
+		data-win-options="{ id: 'cmdFavorites', label: 'Favorites', 
+			icon: 'favorite', tooltip:'Favorites' }"&gt;&lt;/button&gt;
+&lt;/div&gt;
+                    </pre>
+                </div>
+                <div class="clear"></div>
+
+            </div>
+        </section>
+    </div>
+</body>
+</html>

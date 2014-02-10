@@ -1,0 +1,272 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>listview</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="/css/default.css" rel="stylesheet" />
+    <link href="/pages/listview/listview_customLayout.css" rel="stylesheet" />
+    <script src="/pages/listview/listview_customLayout.js"></script>
+</head>
+<body>
+    <!-- The content that will be loaded and displayed. -->
+    <div class="fragment listviewpage">
+        <header id="header" aria-label="Header content" role="banner">
+            <button data-win-control="WinJS.UI.BackButton"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">ListView Custom Circular Layout</span>
+            </h1>
+        </header>
+        <section id="content" aria-label="Main content" role="main">
+            <div class="container">
+                <div class="democontent">
+                    <div>
+                        <p>Demonstrates a circular ListView custom layout. Use the buttons below to add or remove items to see the effect.  Borrowed from some code from Mike Mastrangelo of the WinJS team that was used in a short demo at //build 2013.</p>
+                        
+                        <button id="btnAdd">Add</button>
+                        <button id="btnRemove">Remove</button>
+                        
+                        <input type="checkbox" id="chkSpiral" /><span>Spiral layout (variable radius)</span>
+                    </div>
+                    <div>
+                        <div class="itemTemplate_s3" data-win-control="WinJS.Binding.Template">
+                            <img data-win-bind="src: picture; title: title" height="72" width="72" draggable="false" />
+                        </div>
+                        
+                        <div class="listView_s3" data-win-control="WinJS.UI.ListView" data-win-options="{
+                            itemDataSource: Data.smallList.dataSource,
+                            itemTemplate: select('.itemTemplate_s3'),
+                            layout: { type: CustomLayouts.CircleLayout }}">
+                        </div>
+                    </div>
+
+
+                </div>
+                
+                <hr />
+
+                <div class="codecontent">
+                    <h2>listview_customLayout.html</h2>
+                    <pre class="prettyprint">
+&lt;div&gt;
+    &lt;p&gt;Demonstrates a circular ListView custom layout. 
+        Use the buttons below to add or remove items to see the effect.  
+        Borrowed from some code from Mike Mastrangelo of the WinJS 
+        team that was used in a short demo at //build 2013.&lt;/p&gt;
+                        
+    &lt;button id="btnAdd"&gt;Add&lt;/button&gt;
+    &lt;button id="btnRemove"&gt;Remove&lt;/button&gt;
+                        
+    &lt;input type="checkbox" id="chkSpiral" /&gt;&lt;span&gt;Spiral layout (variable radius)&lt;/span&gt;
+&lt;/div&gt;
+&lt;div&gt;
+    &lt;div class="itemTemplate_s3" data-win-control="WinJS.Binding.Template"&gt;
+		&lt;img data-win-bind="src: picture; title: title" height="72" width="72" draggable="false" /&gt;
+    &lt;/div&gt;
+                        
+    &lt;div class="listView_s3" data-win-control="WinJS.UI.ListView" data-win-options="{
+        itemDataSource: Data.smallList.dataSource,
+        itemTemplate: select('.itemTemplate_s3'),
+        layout: { type: CustomLayouts.CircleLayout }}"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                    </pre>
+                    <hr />
+                    <h2>listview_customLayout.js</h2>
+                    <pre class="prettyprint">
+WinJS.UI.Pages.define("/pages/listview/listview_customLayout.html", {
+    // This function is called whenever a user navigates to this page. It
+    // populates the page elements with the app's data.
+    ready: function (element, options) {
+        prettyPrint(element);
+        //The buttons on this page just add/remove from the data source
+        document.getElementById("btnAdd").addEventListener("click", function () {
+            Data.smallList.push(Data.randomItem());
+        });
+        document.getElementById("btnRemove").addEventListener("click", function () {
+            Data.smallList.pop();
+        });
+        var chkSpiral = document.getElementById("chkSpiral");
+        chkSpiral.checked = false;
+        chkSpiral.addEventListener("click", function () {
+            var list = document.querySelector(".listView_s3").winControl;
+            list.layout.spiral = chkSpiral.checked;
+            list.forceLayout();
+        });
+    },
+});
+WinJS.Namespace.define("CustomLayouts", {
+    CircleLayout: WinJS.Class.define(function (options) {
+        this._site = null;
+        this._surface = null;
+        this._spiral = false;
+        options = options || {};
+        if (options.spiral) {
+            this._spiral = options.spiral;
+        }
+    },
+    {
+        // This sets up any state and CSS layout on the surface of the layout
+        initialize: function (site) {
+            this._site = site;
+            this._surface = this._site.surface;
+            // Add a CSS class to control the surface level layout
+            WinJS.Utilities.addClass(this._surface, "circleLayout");
+            return WinJS.UI.Orientation.vertical;
+        },
+        // Reset the layout to its initial state
+        uninitialize: function () {
+            WinJS.Utilities.removeClass(this._surface, "circleLayout");
+            this._site = null;
+            this._surface = null;
+        },
+        spiral: {
+            get: function () {
+                return this._spiral;
+            },
+            set: function (spiral) {
+                this._spiral = spiral;
+            }
+        },
+        layout: function (tree, changedRange, modifiedElements, modifiedGroups) {
+            var site = this._site;  //This gets all the items
+            var tree = site.tree;
+            var count = 0;
+            for (var groupIndex = 0; groupIndex < tree.length; groupIndex++) {
+                var items = tree[groupIndex].itemsContainer.items;
+                count += items.length;
+            }
+            var itemWidth = 72;
+            var itemHeight = 72;
+            var halfItemWidth = itemWidth / 2;
+            var halfItemHeight = itemHeight / 2;
+            var diameter = Math.min(site.viewportSize.height - itemHeight - halfItemHeight, 
+                                site.viewportSize.width - itemWidth - halfItemWidth);
+            var centerPointY = (site.viewportSize.height - itemHeight) / 2;
+            var centerPointX = (site.viewportSize.width - itemWidth) / 2;
+            var c = this._spiral ? 20 : count;
+            var distanceBetweenItemsInRadians = c ? 2 * Math.PI / c : 0;
+            var absoluteItemIndex = 0;
+            for (var groupIndex = 0; groupIndex < tree.length; groupIndex++) {
+                var groupBundle = tree[groupIndex];
+                var groupHeader = groupBundle.header;
+                var itemsContainer = groupBundle.itemsContainer;
+                var itemsContainerEl = itemsContainer.element;
+                var items = itemsContainer.items;
+                //This places all items in a circle.
+                var radius = diameter / 2;
+                for (var itemIndex = 0; itemIndex < items.length; itemIndex++) {
+                    var container = items[itemIndex];
+                    var itemRadius = this._spiral ? (radius * absoluteItemIndex / items.length) : radius;
+                    var posX = itemRadius * Math.cos(distanceBetweenItemsInRadians * (count - 1 - 
+                                        absoluteItemIndex) - Math.PI / 2);
+                    var posY = itemRadius * Math.sin(distanceBetweenItemsInRadians * (count - 1 - 
+                                        absoluteItemIndex) - Math.PI / 2);
+                    container.style.left = centerPointX + "px";
+                    container.style.top = centerPointY + "px";
+                    if (container.style.opacity === "") {
+                        container.style.opacity = "0";
+                        container.style.opacity.transition = "none";
+                        getComputedStyle(container).opacity;
+                        container.style.opacity.transition = "";
+                        container.style.opacity = "1";
+                    }
+                    container.style.transform = "translate(" + posX + 'px, ' + posY + 'px)';
+                    absoluteItemIndex++;
+                }
+            }
+            return WinJS.Promise.as(); // A Promise or {realizedRangeComplete: Promise, layoutComplete: Promise};
+        },
+    })
+});
+                    </pre>
+                    <hr />
+                    <h2>data.js</h2>
+                    <pre class="prettyprint">
+(function () {
+    "use strict";
+    var itemArray = [
+        { type: "status", picture: "/images/60Banana.png", title: "Banana Blast", 
+                        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+        { type: "photo", picture: "/images/60Lemon.png", 
+                        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+        { type: "photo", picture: "/images/60Mint.png", title: "Marvelous Mint", 
+                        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+        { type: "status", picture: "/images/60Orange.png", title: "Creamy Orange", 
+                        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+        { type: "status", picture: "/images/60Strawberry.png", title: "Succulent Strawberry", 
+                        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+        { type: "photo", picture: "/images/60Vanilla.png", title: "Very Vanilla", 
+                        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+    ];
+    
+    function randomItem() {
+        var i = Math.floor(Math.random() * itemArray.length);
+        return itemArray[i];
+    }
+    var items = [];
+    // Generate 120 items--note that we need to make copies of the items in the source array
+    // so that each item is unique and not a reference. The id is included for debugging. 
+    var i, j, id = 0;
+    var c = itemArray.length;
+    for (i = 0; i < 20; i++) {
+        for (j = 0; j < c; j++) {
+            var item = itemArray[j];            
+            items.push({ id: id, type: item.type, picture: item.picture, title: item.title, text: item.text });
+            id++;
+        }
+    }
+    var list = new WinJS.Binding.List(items);
+    // Generate a smaller list (just two copies of the array)
+    var itemsShort = [];
+    for (var i = 0; i < 2; i++) {
+        itemArray.forEach(function (item) {
+            itemsShort.push(item);
+        });
+    }
+    var smallList = new WinJS.Binding.List(itemsShort);
+    // Sort the items in localized order so that the items within the groups
+    // appear in the correct order
+    var sortedItems = items.sort(function (left, right) {
+        return right.title.localeCompare(left.title);
+    });
+    // Build a Binding.List to hold the sorted data.
+    var sortedList = new WinJS.Binding.List(sortedItems);
+    // For globalized grouping data
+    var charGroups = Windows.Globalization.Collation.CharacterGroupings();
+    // Function which returns the group key that an item belongs to
+    function getGroupKey(dataItem) {
+        // This sample uses globalization data to determine the grouping
+        return charGroups.lookup(dataItem.title); // Ensure this always returns a string
+    }
+    // Function which returns the data for a group
+    function getGroupData(dataItem) {
+        // In this case, just use the group key
+        var key = getGroupKey(dataItem);
+        return {
+            groupTitle: key,
+        };
+    }
+    // Create a grouped list for the ListView from the item data and the grouping functions
+    var groupedList = sortedList.createGrouped(getGroupKey, getGroupData);
+    WinJS.Namespace.define("Data", {
+        list: list,
+        smallList: smallList,
+        groupedList: groupedList,
+        randomItem: randomItem
+    });
+})();
+                    </pre>
+                </div>
+                <div class="clear"></div>
+
+            </div>
+        </section>
+    </div>
+</body>
+</html>

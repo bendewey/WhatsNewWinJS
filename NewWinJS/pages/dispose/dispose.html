@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Dispose</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="/css/default.css" rel="stylesheet" />
+    <link href="/pages/dispose/dispose.css" rel="stylesheet" />
+    <script src="/pages/dispose/counter.js"></script>
+    <script src="/pages/dispose/dispose.js"></script>
+</head>
+<body>
+    <!-- The content that will be loaded and displayed. -->
+    <div class="fragment disposepage">
+        <header id="header" aria-label="Header content" role="banner">
+            <button data-win-control="WinJS.UI.BackButton"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">Dispose</span>
+            </h1>
+        </header>
+        <section id="content" aria-label="Main content" role="main">
+            <div class="container">
+                <div class="democontent">
+                    <h2>Dispose</h2>
+
+                    <button class="dispose">Dispose</button>
+
+                    <hr />
+                    
+                    <button class="addControl">Add Control</button>
+                    <div class="counterContainer"></div>
+
+                    <button class="navigate">Navigate To New Page</button>
+
+                </div>
+                <hr />
+                <div class="codecontent">
+                    <h2>dispose.html</h2>
+                    <pre class="prettyprint">
+&lt;button class="dispose"&gt;Dispose&lt;/button&gt;
+&lt;hr /&gt;
+&lt;button class="addControl"&gt;Add Control&lt;/button&gt;
+&lt;div class="counterContainer"&gt;&lt;/div&gt;
+&lt;button class="navigate"&gt;Navigate To New Page&lt;/button&gt;                    
+                    </pre>
+                    
+                    <h2>counter.js</h2>
+                    <pre class="prettyprint">
+(function () {
+    "use strict";
+    var count = 0;
+    WinJS.Namespace.define("NewWinJS", {
+        Counter: WinJS.Class.define(
+            function (element) {
+                this._element = element || document.createElement("div");
+                this._element.winControl = this;
+                //using this class auto activates dispose when tree is disposing
+                //WinJS.Utilities.addClass(this._element, "win-disposable");
+                // create all sub-controls
+                this._createSubControls();
+            },
+            {
+                element: {
+                    get: function () {
+                        return this._element;
+                    }
+                },
+                _createSubControls: function () {
+                    var labelDiv = document.createElement("div");
+                    labelDiv.innerText = count++;
+                    this._element.appendChild(labelDiv);
+                },
+                dispose: function () {
+                    count = 0;
+                }
+            }
+        )
+    });
+})();
+                    </pre>
+                    
+                    <h2>dispose.js</h2>
+                    <pre class="prettyprint">
+(function () {
+    "use strict";
+    var disposeOnNavigation;
+    WinJS.UI.Pages.define("/pages/dispose/dispose.html", {
+        // This function is called whenever a user navigates to this page. It
+        // populates the page elements with the app's data.
+        ready: function (element, options) {
+            prettyPrint(element);
+            this._element = element;
+            element.querySelector(".navigate").addEventListener("click", navigate);
+            element.querySelector(".addControl").addEventListener("click", addControl.bind(this));
+            element.querySelector(".dispose").addEventListener("click", disposeHandler.bind(this));
+        }
+    });
+    function navigate() {
+        WinJS.Navigation.navigate('/pages/dispose/dispose.html');
+    }
+    function addControl() {
+        var container = this._element.querySelector(".counterContainer");
+        var control = new NewWinJS.Counter();
+        container.appendChild(control.element);
+    }
+    function disposeHandler() {
+        var container = this._element.querySelector(".counterContainer");
+        WinJS.Utilities.children(container).forEach(function(child) {
+            if (child.winControl && child.winControl.dispose) {
+                child.winControl.dispose();
+            }
+        });
+        WinJS.Navigation.history.backStack = WinJS.Navigation.history.backStack.slice(0, 0);
+        WinJS.Navigation.navigate('/pages/dispose/dispose.html');
+    }
+})();
+                    </pre>
+                </div>
+                <div class="clear"></div>
+
+            </div>
+        </section>
+    </div>
+</body>
+</html>

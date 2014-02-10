@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Menu</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="/css/default.css" rel="stylesheet" />
+    <link href="/pages/menu/menu.css" rel="stylesheet" />
+    <script src="/pages/menu/menu.js"></script>
+</head>
+<body>
+    <!-- The content that will be loaded and displayed. -->
+    <div class="fragment menupage">
+        <header id="header" aria-label="Header content" role="banner">
+            <button data-win-control="WinJS.UI.BackButton"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">What's New in WinJS Windows 8.1</span>
+            </h1>
+        </header>
+        <section id="content" aria-label="Main content" role="main">
+            <div class="container">
+                <div class="column">
+                    <h2>CONTROLS</h2>
+                    <hr />
+                    <div class="items">
+                        <button data-href="/pages/listview/listview.html">ListView</button>
+                        <button data-href="/pages/listview/listview_customlayout.html">ListView Circular Layout</button>
+                        <button data-href="/pages/listview/listview_dragdrop.html">ListView Drag and Drop</button>
+                        
+                        <button data-href="/pages/listview/itemcontainer.html">ItemContainer</button>
+                        <button data-href="/pages/listview/repeater.html">Repeater</button>
+                        
+                        <hr />    
+                        <button data-href="/pages/appbar/appbar.html">AppBar</button>
+                        <button data-href="/pages/navbar/navbar.html">NavBar</button>
+                        <button data-href="/pages/backbutton/backbutton.html">BackButton</button>
+                        
+                        <hr/>
+                        
+                        <button data-href="/pages/hub/hub_launcher.html">Hub</button>
+                        <button data-href="/pages/searchbox/searchbox.html">SearchBox</button>
+
+                        <hr />    
+                    </div>
+                </div>
+                <div class="column">
+                    <h2>APIS</h2>
+                    <hr />
+                    <div class="items">
+                        <button data-href="/pages/scheduler/scheduler.html">Scheduler</button>
+                        <button data-href="/pages/dispose/dispose.html">Dispose</button>
+
+                        <hr />
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+

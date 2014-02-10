@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>NavBar</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="/css/default.css" rel="stylesheet" />
+    <link href="/pages/navbar/navbar.css" rel="stylesheet" />
+    <script src="/pages/navbar/navbar.js"></script>
+</head>
+<body>
+    <!-- The content that will be loaded and displayed. -->
+    <div class="fragment navbarpage">
+        <header id="header" aria-label="Header content" role="banner">
+            <button data-win-control="WinJS.UI.BackButton"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">NavBar Control</span>
+            </h1>
+        </header>
+        <section id="content" aria-label="Main content" role="main">
+            <div class="container">
+                <div class="democontent">
+                    <h2>NavBar Control</h2>
+                    <p>(swipe or right click to display)</p>
+                    
+                    <!-- Create NavBar -->
+                    <!-- BEGINTEMPLATE: Template code for an NavBar -->
+                    <div id="createNavBar" data-win-control="WinJS.UI.NavBar">
+                        <div data-win-control="WinJS.UI.NavBarContainer">
+                            <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{ label: 'Home', icon: 'url(/images/40Banana.png)' }"></div>
+                            <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{ label: 'Favorite', icon: 'favorite' }"></div>
+                            <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{ label: 'Your account', icon: 'people' }"></div>
+                            <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{ label: 'Music', icon: 'audio' }"></div>
+                            <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{ label: 'Video', icon: 'video' }"></div>
+                            <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{ label: 'Photos', icon: 'camera' }"></div>
+                            <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{ label: 'Settings', icon: 'settings' }"></div>
+                        </div>
+                    </div> 
+                    <!-- ENDTEMPLATE -->
+
+                </div>
+                <hr />
+                <div class="codecontent">
+                    <h2>navbar.html</h2>
+                    <pre class="prettyprint">
+&lt;div id="createNavBar" data-win-control="WinJS.UI.NavBar"&gt;
+	&lt;div data-win-control="WinJS.UI.NavBarContainer"&gt;
+		&lt;div data-win-control="WinJS.UI.NavBarCommand" 
+                data-win-options="{ label: 'Home', icon: 'url(/images/40Banana.png)' }"&gt;&lt;/div&gt;
+		&lt;div data-win-control="WinJS.UI.NavBarCommand" 
+                data-win-options="{ label: 'Favorite', icon: 'favorite' }"&gt;&lt;/div&gt;
+		&lt;div data-win-control="WinJS.UI.NavBarCommand" 
+                data-win-options="{ label: 'Your account', icon: 'people' }"&gt;&lt;/div&gt;
+		&lt;div data-win-control="WinJS.UI.NavBarCommand" 
+                data-win-options="{ label: 'Music', icon: 'audio' }"&gt;&lt;/div&gt;
+		&lt;div data-win-control="WinJS.UI.NavBarCommand" 
+                data-win-options="{ label: 'Video', icon: 'video' }"&gt;&lt;/div&gt;
+		&lt;div data-win-control="WinJS.UI.NavBarCommand" 
+                data-win-options="{ label: 'Photos', icon: 'camera' }"&gt;&lt;/div&gt;
+		&lt;div data-win-control="WinJS.UI.NavBarCommand" 
+                data-win-options="{ label: 'Settings', icon: 'settings' }"&gt;&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt; 
+                    </pre>
+                </div>
+                <div class="clear"></div>
+
+            </div>
+        </section>
+    </div>
+</body>
+</html>

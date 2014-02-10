@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>hub</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="/css/default.css" rel="stylesheet" />
+    <link href="/pages/hub/hub.css" rel="stylesheet" />
+    <script src="/pages/hub/hub_launcher.js"></script>
+</head>
+<body>
+    <!-- The content that will be loaded and displayed. -->
+    <div class="fragment hubpage">
+        <header id="header" aria-label="Header content" role="banner">
+            <button data-win-control="WinJS.UI.BackButton"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">Hub</span>
+            </h1>
+        </header>
+        <section id="content" aria-label="Main content" role="main">
+            <div class="container">
+                <div class="democontent">
+                    <h2>Hub</h2>
+                    <button id="button1">Launch Full Screen Sample</button>
+
+
+                </div>
+                <hr />
+                <div class="codecontent">
+                    <h2>hub.html</h2>
+                    <pre class="prettyprint">
+&lt;div data-win-control="WinJS.UI.Hub"&gt;
+	&lt;div class="section1" data-win-control="WinJS.UI.HubSection" 
+		data-win-options="{header: 'Images', isHeaderStatic: true}"&gt;
+		&lt;!-- Section --&gt;
+	&lt;/div&gt;
+	&lt;div id="list" class="section2" data-win-control="WinJS.UI.HubSection" 
+		data-win-options="{header: 'ListView', isHeaderStatic: true}"&gt;
+		&lt;!-- Section --&gt;
+	&lt;/div&gt;
+	&lt;div class="section3" data-win-control="WinJS.UI.HubSection" 
+		data-win-options="{header: 'Video', isHeaderStatic: true}"&gt;
+		&lt;!-- Section --&gt;
+	&lt;/div&gt;
+	&lt;div class="section4" data-win-control="WinJS.UI.HubSection" 
+		data-win-options="{header: 'Form Controls', isHeaderStatic: true}"&gt;
+		&lt;!-- Section --&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+                    </pre>
+                </div>
+                <div class="clear"></div>
+
+            </div>
+        </section>
+    </div>
+</body>
+</html>

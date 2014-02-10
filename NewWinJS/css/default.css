@@ -1,0 +1,110 @@
+﻿html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+	background: #141414;
+}
+
+#contenthost {
+    height: 100%;
+    width: 100%;
+}
+
+.fragment {
+    /* Define a grid with rows for a banner and a body */
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 128px 1fr;
+    display: -ms-grid;
+    height: 100%;
+    width: 100%;
+}
+
+    .fragment header[role=banner] {
+        /* Define a grid with columns for the back button and page title. */
+        -ms-grid-columns: 37px 83px 1fr;
+        -ms-grid-rows: 1fr;
+        display: -ms-grid;
+    }
+
+        .fragment header[role=banner] .win-navigation-backbutton {
+            -ms-grid-column: 2;
+            margin-top: 57px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .fragment header[role=banner] .titlearea {
+            -ms-grid-column: 3;
+            margin-top: 37px;
+        }
+
+            .fragment header[role=banner] .titlearea .pagetitle {
+                width: calc(100% - 20px);
+            }
+
+    .fragment section[role=main] {
+        -ms-grid-row: 2;
+        height: 100%;
+        width: 100%;
+    }
+
+#header {
+    background: #121212 url(../images/bg_head.jpg) no-repeat top center;
+    border-bottom: 1px solid #000;
+    height: 135px;
+}
+
+#content {
+    color: #737373;
+    background: #141414 url(../images/bg-bottom-dark.png) repeat-x top;
+    overflow-y: scroll;
+}
+
+.container {
+    width: 960px;
+	margin: 0 auto;
+}
+
+.column {
+	float:left;
+	width:250px;	
+	margin-top:60px;
+}
+
+.items {
+    margin: 0px 12px;   
+}
+
+h2 {
+	color:#05ADD5;
+}
+
+hr {
+	border:solid 1px #4C4C4C;
+	border-top:solid 1px #000;
+}
+
+.clear {
+	clear:both;
+}
+
+pre {
+    background: white;
+    border: 1px solid black;
+}
+
+.democontent {
+    margin-top:60px;
+    margin-bottom: 60px;
+}
+
+.codecontent {
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+
+.prettyprint {
+    -ms-user-select: text;
+}

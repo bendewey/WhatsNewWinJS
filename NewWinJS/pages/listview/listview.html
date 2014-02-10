@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>listview</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="/css/default.css" rel="stylesheet" />
+    <link href="/pages/listview/listview.css" rel="stylesheet" />
+    <script src="/pages/listview/listview.js"></script>
+</head>
+<body>
+    <!-- The content that will be loaded and displayed. -->
+    <div class="fragment listviewpage">
+        <header id="header" aria-label="Header content" role="banner">
+            <button data-win-control="WinJS.UI.BackButton"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">ListView Improvements</span>
+            </h1>
+        </header>
+        <section id="content" aria-label="Main content" role="main">
+            <div class="container">
+                <div class="democontent">
+                    <!-- Simple template for the ListView instantiation  -->
+                    <div id="smallListIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
+                        <div class="smallListIconTextItem">
+                            <img src="#" class="smallListIconTextItem-Image" data-win-bind="src: picture" />
+                            <div class="smallListIconTextItem-Detail">
+                                <h4 data-win-bind="innerText: title"></h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2>WinJS.UI.GridLayout horizontal</h2>
+                    <div class="win-selectionstylefilled"
+                         data-win-control="WinJS.UI.ListView"
+                         data-win-options="{
+                            itemDataSource: Data.list.dataSource,
+                            itemTemplate: smallListIconTextTemplate,
+                            selectionMode: 'none',
+                            tapBehavior: 'none',
+                            swipeBehavior: 'none',
+                            layout: { type: WinJS.UI.GridLayout, orientation: WinJS.UI.Orientation.horizontal}
+                        }"></div>
+                    
+                    <hr />
+                    
+                    <h2>WinJS.UI.ListLayout vertical</h2>
+                    <div class="verticalList win-selectionstylefilled"
+                         data-win-control="WinJS.UI.ListView"
+                         data-win-options="{
+                                itemDataSource: Data.list.dataSource,
+                                itemTemplate: smallListIconTextTemplate,
+                                selectionMode: 'none',
+                                tapBehavior: 'none',
+                                swipeBehavior: 'none',
+                                layout: { type: WinJS.UI.ListLayout, orientation: WinJS.UI.Orientation.vertical}
+                            }"></div>
+
+
+                </div>
+                <hr />
+                <div class="codecontent">
+                    <h2>listview.html</h2>
+                    <pre class="prettyprint">
+&lt;div id="smallListIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none"&gt;
+    &lt;div class="smallListIconTextItem"&gt;
+    &lt;img src="#" class="smallListIconTextItem-Image" data-win-bind="src: picture" /&gt;
+    &lt;div class="smallListIconTextItem-Detail"&gt;
+    &lt;h4 data-win-bind="innerText: title"&gt;&lt;/h4&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                        
+&lt;div class="win-selectionstylefilled"
+    data-win-control="WinJS.UI.ListView"
+    data-win-options="{
+        itemDataSource: Data.list.dataSource,
+        itemTemplate: smallListIconTextTemplate,
+        selectionMode: 'none',
+        tapBehavior: 'none',
+        swipeBehavior: 'none',
+        layout: { type: WinJS.UI.GridLayout, orientation: WinJS.UI.Orientation.horizontal}
+        }"&gt;&lt;/div&gt;
+
+&lt;div class="verticalList win-selectionstylefilled"
+    data-win-control="WinJS.UI.ListView"
+    data-win-options="{
+        itemDataSource: Data.list.dataSource,
+        itemTemplate: smallListIconTextTemplate,
+        selectionMode: 'none',
+        tapBehavior: 'none',
+        swipeBehavior: 'none',
+        layout: { type: WinJS.UI.ListLayout, orientation: WinJS.UI.Orientation.vertical}
+        }"&gt;&lt;/div&gt;
+                    </pre>
+                </div>
+                <div class="clear"></div>
+
+            </div>
+        </section>
+    </div>
+</body>
+</html>

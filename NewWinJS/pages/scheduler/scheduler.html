@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Scheduler</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="/css/default.css" rel="stylesheet" />
+    <link href="/pages/scheduler/scheduler.css" rel="stylesheet" />
+    <script src="/pages/scheduler/scheduler.js"></script>
+</head>
+<body>
+    <!-- The content that will be loaded and displayed. -->
+    <div class="fragment schedulerpage">
+        <header id="header" aria-label="Header content" role="banner">
+            <button data-win-control="WinJS.UI.BackButton"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">Scheduler Control</span>
+            </h1>
+        </header>
+        <section id="content" aria-label="Main content" role="main">
+            <div class="container">
+                <div class="democontent">
+                    <h2>Scheduler Control</h2>
+
+                    <button id="scheduleJobs">Run Jobs</button>
+                    
+                    <hr />
+
+                    <ul>
+                        <li>
+                            <span class="label normal">Job #1</span>
+                            <span id="job1status" class="status notrunning"></span>
+                        </li>
+                        <li>
+                            <span class="label high">Job #2</span>
+                            <span id="job2status" class="status notrunning"></span>
+                        </li>
+                        <li>
+                            <div class="label idle">Job #3</div>
+                            <div id="job3status" class="status notrunning"></div>
+                        </li>
+                        <li>
+                            <div class="label belowNormal">Job #4</div>
+                            <div id="job4status" class="status notrunning"></div>
+                        </li>
+                        <li>
+                            <div class="label aboveNormal">Job #5</div>
+                            <div id="job5status" class="status notrunning"></div>
+                        </li>
+                    </ul>
+
+                </div>
+                <hr />
+                <div class="codecontent">
+                    <h2>scheduler.html</h2>
+                    <pre class="prettyprint">
+&lt;button id="scheduleJobs"&gt;Run Jobs&lt;/button&gt;
+                    
+&lt;hr /&gt;
+&lt;ul&gt;
+    &lt;li&gt;
+        &lt;span class="label normal"&gt;Job #1&lt;/span&gt;
+        &lt;span id="job1status" class="status notrunning"&gt;&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;span class="label high"&gt;Job #2&lt;/span&gt;
+        &lt;span id="job2status" class="status notrunning"&gt;&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div&lt;i&gt; class="label idle"&gt;Job #3&lt;/div&gt;
+        &lt;div&lt;/i&gt;d="job3status" class="status notrunning"&gt;&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div&lt;i&gt;class="label belowNormal"&gt;Job #4&lt;/div&gt;
+        &lt;div&lt;/i&gt;d="job4status" class="status notrunning"&gt;&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="label aboveNormal"&gt;Job #5&lt;/div&gt;
+        &lt;div id="job5status" class="status notrunning"&gt;&lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+                    </pre>
+
+                    <h2>scheduler.js</h2>
+                    <pre class="prettyprint">
+                        (function () {
+    "use strict";
+
+    WinJS.UI.Pages.define("/pages/scheduler/scheduler.html", {
+        // This function is called whenever a user navigates to this page. It
+        // populates the page elements with the app's data.
+        ready: function (element, options) {
+            prettyPrint(element);
+            document.getElementById("scheduleJobs").addEventListener("click", scheduleJobs);
+        }
+    });
+
+    var order = 0;
+    var S = WinJS.Utilities.Scheduler;
+
+    function scheduleJobs(eventObject) {
+        
+        var job1status = document.getElementById("job1status");
+        var job2status = document.getElementById("job2status");
+        var job3status = document.getElementById("job3status");
+        var job4status = document.getElementById("job4status");
+        var job5status = document.getElementById("job5status");
+        resetStatus(job1status);
+        resetStatus(job2status);
+        resetStatus(job3status);
+        resetStatus(job4status);
+        resetStatus(job5status);
+        order = 0;
+
+        scheduleJob(job1status, S.Priority.normal);
+        scheduleJob(job2status, S.Priority.high);
+        scheduleJob(job3status, S.Priority.idle);
+        scheduleJob(job4status, S.Priority.belowNormal);
+        scheduleJob(job5status, S.Priority.aboveNormal);
+    }
+
+    function scheduleJob(el, priority, work) {
+        S.schedule(function (job) {
+            delay(2);
+            WinJS.Utilities.addClass(el, "joborder" + (order++));
+        }, priority);
+        
+        WinJS.Utilities.addClass(el, "scheduled");
+    }
+
+    function resetStatus(el) {
+        ["notrunning", "scheduled", "running", "joborder0", "joborder1", "joborder2", "joborder3", "joborder4"].forEach(function (className) {
+            WinJS.Utilities.removeClass(el, className);
+        });
+        WinJS.Utilities.addClass(el, "notrunning");
+    }
+
+    function delay(seconds) {
+        var e = new Date().getTime() + (seconds * 1000);
+        while (new Date().getTime() <= e) { }
+    }
+})();
+                    </pre>
+                </div>
+                <div class="clear"></div>
+
+            </div>
+        </section>
+    </div>
+</body>
+</html>

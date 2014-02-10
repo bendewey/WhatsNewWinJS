@@ -1,0 +1,106 @@
+﻿.democontent {
+    color: #fff;
+}
+
+.democontent ul {
+    list-style-type: none;
+}
+
+.democontent ul li {
+    padding: 16px 0;
+    height: 36px;
+    position: relative;
+}
+
+.label {
+    padding: 8px 0;
+}
+
+.high:after {
+    content: ' (high)';
+    width: 50px;
+    color: tomato;
+}
+
+.aboveNormal:after {
+    content: ' (aboveNormal)';
+    width: 50px;
+    color: #EF7D02;
+}
+
+.normal:after {
+    content: ' (normal)';
+    width: 50px;
+    color: orange;
+}
+
+.belowNormal:after {
+    content: ' (belowNormal)';
+    width: 50px;
+    color: #B7A436;
+}
+
+.idle:after {
+    content: ' (idle)';
+    width: 50px;
+    color: #8B7C2F;
+}
+
+.status:after {
+    border: 1px solid black;
+    padding: 12px;
+    width: 100px;
+    display: block;
+    position: absolute;
+    top: 12px;
+}
+
+.notrunning:after {
+    content: 'Not Running';
+    left: 170px;
+    background: grey;
+}
+
+.scheduled:after {
+    content: 'Scheduled';
+    left: 170px;
+    background: #555;
+
+}
+
+.running:after {
+    content: 'Running';
+    left: 170px;
+    background: green;
+
+}
+
+.joborder0:after {
+    content: '1st';
+    left: 200px;
+    background: tomato;
+}
+
+.joborder1:after {
+    content: '2nd';
+    left: 300px;
+    background: #EF7D02;
+}
+
+.joborder2:after {
+    content: '3rd';
+    left: 400px;
+    background: #E5A11D;
+}
+
+.joborder3:after {
+    content: '4th';
+    left: 500px;
+    background: #B7A436;
+}
+
+.joborder4:after {
+    content: '5th';
+    left: 600px;
+    background: #8B7C2F;
+}
