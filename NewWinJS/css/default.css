@@ -71,6 +71,7 @@ body {
 	float:left;
 	width:250px;	
 	margin-top:60px;
+    margin-right: 20px;
 }
 
 .items {
@@ -107,4 +108,14 @@ pre {
 
 .prettyprint {
     -ms-user-select: text;
+}
+
+.small {
+    font-size: 60%;
+}
+
+.bottomright {
+    position: absolute;
+    bottom: 60px;
+    right:60px;   
 }

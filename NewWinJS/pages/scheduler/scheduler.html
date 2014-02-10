@@ -58,93 +58,86 @@
                 <hr />
                 <div class="codecontent">
                     <h2>scheduler.html</h2>
-                    <pre class="prettyprint">
-&lt;button id="scheduleJobs"&gt;Run Jobs&lt;/button&gt;
+                    <pre class="prettyprinted">
+<span class="tag">&lt;button</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"scheduleJobs"</span><span class="tag">&gt;</span><span class="pln">Run Jobs</span><span class="tag">&lt;/button&gt;</span><span class="pln">
                     
-&lt;hr /&gt;
-&lt;ul&gt;
-    &lt;li&gt;
-        &lt;span class="label normal"&gt;Job #1&lt;/span&gt;
-        &lt;span id="job1status" class="status notrunning"&gt;&lt;/span&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;span class="label high"&gt;Job #2&lt;/span&gt;
-        &lt;span id="job2status" class="status notrunning"&gt;&lt;/span&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;div&lt;i&gt; class="label idle"&gt;Job #3&lt;/div&gt;
-        &lt;div&lt;/i&gt;d="job3status" class="status notrunning"&gt;&lt;/div&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;div&lt;i&gt;class="label belowNormal"&gt;Job #4&lt;/div&gt;
-        &lt;div&lt;/i&gt;d="job4status" class="status notrunning"&gt;&lt;/div&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;div class="label aboveNormal"&gt;Job #5&lt;/div&gt;
-        &lt;div id="job5status" class="status notrunning"&gt;&lt;/div&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
+</span><span class="tag">&lt;hr</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+</span><span class="tag">&lt;ul&gt;</span><span class="pln">
+    </span><span class="tag">&lt;li&gt;</span><span class="pln">
+        </span><span class="tag">&lt;span</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"label normal"</span><span class="tag">&gt;</span><span class="pln">Job #1</span><span class="tag">&lt;/span&gt;</span><span class="pln">
+        </span><span class="tag">&lt;span</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"job1status"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"status notrunning"</span><span class="tag">&gt;&lt;/span&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/li&gt;</span><span class="pln">
+    </span><span class="tag">&lt;li&gt;</span><span class="pln">
+        </span><span class="tag">&lt;span</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"label high"</span><span class="tag">&gt;</span><span class="pln">Job #2</span><span class="tag">&lt;/span&gt;</span><span class="pln">
+        </span><span class="tag">&lt;span</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"job2status"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"status notrunning"</span><span class="tag">&gt;&lt;/span&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/li&gt;</span><span class="pln">
+    </span><span class="tag">&lt;li&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"label idle"</span><span class="tag">&gt;</span><span class="pln">Job #3</span><span class="tag">&lt;/div&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"job3status"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"status notrunning"</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/li&gt;</span><span class="pln">
+    </span><span class="tag">&lt;li&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"label belowNormal"</span><span class="tag">&gt;</span><span class="pln">Job #4</span><span class="tag">&lt;/div&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"job4status"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"status notrunning"</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/li&gt;</span><span class="pln">
+    </span><span class="tag">&lt;li&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"label aboveNormal"</span><span class="tag">&gt;</span><span class="pln">Job #5</span><span class="tag">&lt;/div&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"job5status"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"status notrunning"</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/li&gt;</span><span class="pln">
+</span><span class="tag">&lt;/ul&gt;</span>
                     </pre>
 
                     <h2>scheduler.js</h2>
-                    <pre class="prettyprint">
-                        (function () {
-    "use strict";
-
-    WinJS.UI.Pages.define("/pages/scheduler/scheduler.html", {
-        // This function is called whenever a user navigates to this page. It
-        // populates the page elements with the app's data.
-        ready: function (element, options) {
-            prettyPrint(element);
-            document.getElementById("scheduleJobs").addEventListener("click", scheduleJobs);
-        }
-    });
-
-    var order = 0;
-    var S = WinJS.Utilities.Scheduler;
-
-    function scheduleJobs(eventObject) {
+                    <pre class="prettyprinted">
+<span class="pun">(</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"use strict"</span><span class="pun">;</span><span class="pln">
+    </span><span class="typ">WinJS</span><span class="pun">.</span><span class="pln">UI</span><span class="pun">.</span><span class="typ">Pages</span><span class="pun">.</span><span class="pln">define</span><span class="pun">(</span><span class="str">"/pages/scheduler/scheduler.html"</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="com">// This function is called whenever a user navigates to this page. It</span><span class="pln">
+        </span><span class="com">// populates the page elements with the app's data.</span><span class="pln">
+        ready</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln">element</span><span class="pun">,</span><span class="pln"> options</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            prettyPrint</span><span class="pun">(</span><span class="pln">element</span><span class="pun">);</span><span class="pln">
+            document</span><span class="pun">.</span><span class="pln">getElementById</span><span class="pun">(</span><span class="str">"scheduleJobs"</span><span class="pun">).</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="str">"click"</span><span class="pun">,</span><span class="pln"> scheduleJobs</span><span class="pun">);</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">});</span><span class="pln">
+    </span><span class="kwd">var</span><span class="pln"> order </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">var</span><span class="pln"> S </span><span class="pun">=</span><span class="pln"> </span><span class="typ">WinJS</span><span class="pun">.</span><span class="typ">Utilities</span><span class="pun">.</span><span class="typ">Scheduler</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">function</span><span class="pln"> scheduleJobs</span><span class="pun">(</span><span class="pln">eventObject</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
         
-        var job1status = document.getElementById("job1status");
-        var job2status = document.getElementById("job2status");
-        var job3status = document.getElementById("job3status");
-        var job4status = document.getElementById("job4status");
-        var job5status = document.getElementById("job5status");
-        resetStatus(job1status);
-        resetStatus(job2status);
-        resetStatus(job3status);
-        resetStatus(job4status);
-        resetStatus(job5status);
-        order = 0;
-
-        scheduleJob(job1status, S.Priority.normal);
-        scheduleJob(job2status, S.Priority.high);
-        scheduleJob(job3status, S.Priority.idle);
-        scheduleJob(job4status, S.Priority.belowNormal);
-        scheduleJob(job5status, S.Priority.aboveNormal);
-    }
-
-    function scheduleJob(el, priority, work) {
-        S.schedule(function (job) {
-            delay(2);
-            WinJS.Utilities.addClass(el, "joborder" + (order++));
-        }, priority);
+        </span><span class="kwd">var</span><span class="pln"> job1status </span><span class="pun">=</span><span class="pln"> document</span><span class="pun">.</span><span class="pln">getElementById</span><span class="pun">(</span><span class="str">"job1status"</span><span class="pun">);</span><span class="pln">
+        </span><span class="kwd">var</span><span class="pln"> job2status </span><span class="pun">=</span><span class="pln"> document</span><span class="pun">.</span><span class="pln">getElementById</span><span class="pun">(</span><span class="str">"job2status"</span><span class="pun">);</span><span class="pln">
+        </span><span class="kwd">var</span><span class="pln"> job3status </span><span class="pun">=</span><span class="pln"> document</span><span class="pun">.</span><span class="pln">getElementById</span><span class="pun">(</span><span class="str">"job3status"</span><span class="pun">);</span><span class="pln">
+        </span><span class="kwd">var</span><span class="pln"> job4status </span><span class="pun">=</span><span class="pln"> document</span><span class="pun">.</span><span class="pln">getElementById</span><span class="pun">(</span><span class="str">"job4status"</span><span class="pun">);</span><span class="pln">
+        </span><span class="kwd">var</span><span class="pln"> job5status </span><span class="pun">=</span><span class="pln"> document</span><span class="pun">.</span><span class="pln">getElementById</span><span class="pun">(</span><span class="str">"job5status"</span><span class="pun">);</span><span class="pln">
+        resetStatus</span><span class="pun">(</span><span class="pln">job1status</span><span class="pun">);</span><span class="pln">
+        resetStatus</span><span class="pun">(</span><span class="pln">job2status</span><span class="pun">);</span><span class="pln">
+        resetStatus</span><span class="pun">(</span><span class="pln">job3status</span><span class="pun">);</span><span class="pln">
+        resetStatus</span><span class="pun">(</span><span class="pln">job4status</span><span class="pun">);</span><span class="pln">
+        resetStatus</span><span class="pun">(</span><span class="pln">job5status</span><span class="pun">);</span><span class="pln">
+        order </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+        scheduleJob</span><span class="pun">(</span><span class="pln">job1status</span><span class="pun">,</span><span class="pln"> S</span><span class="pun">.</span><span class="typ">Priority</span><span class="pun">.</span><span class="pln">normal</span><span class="pun">);</span><span class="pln">
+        scheduleJob</span><span class="pun">(</span><span class="pln">job2status</span><span class="pun">,</span><span class="pln"> S</span><span class="pun">.</span><span class="typ">Priority</span><span class="pun">.</span><span class="pln">high</span><span class="pun">);</span><span class="pln">
+        scheduleJob</span><span class="pun">(</span><span class="pln">job3status</span><span class="pun">,</span><span class="pln"> S</span><span class="pun">.</span><span class="typ">Priority</span><span class="pun">.</span><span class="pln">idle</span><span class="pun">);</span><span class="pln">
+        scheduleJob</span><span class="pun">(</span><span class="pln">job4status</span><span class="pun">,</span><span class="pln"> S</span><span class="pun">.</span><span class="typ">Priority</span><span class="pun">.</span><span class="pln">belowNormal</span><span class="pun">);</span><span class="pln">
+        scheduleJob</span><span class="pun">(</span><span class="pln">job5status</span><span class="pun">,</span><span class="pln"> S</span><span class="pun">.</span><span class="typ">Priority</span><span class="pun">.</span><span class="pln">aboveNormal</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="kwd">function</span><span class="pln"> scheduleJob</span><span class="pun">(</span><span class="pln">el</span><span class="pun">,</span><span class="pln"> priority</span><span class="pun">,</span><span class="pln"> work</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        S</span><span class="pun">.</span><span class="pln">schedule</span><span class="pun">(</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln">job</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            delay</span><span class="pun">(</span><span class="lit">2</span><span class="pun">);</span><span class="pln">
+            </span><span class="typ">WinJS</span><span class="pun">.</span><span class="typ">Utilities</span><span class="pun">.</span><span class="pln">addClass</span><span class="pun">(</span><span class="pln">el</span><span class="pun">,</span><span class="pln"> </span><span class="str">"joborder"</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="pun">(</span><span class="pln">order</span><span class="pun">++));</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln"> priority</span><span class="pun">);</span><span class="pln">
         
-        WinJS.Utilities.addClass(el, "scheduled");
-    }
-
-    function resetStatus(el) {
-        ["notrunning", "scheduled", "running", "joborder0", "joborder1", "joborder2", "joborder3", "joborder4"].forEach(function (className) {
-            WinJS.Utilities.removeClass(el, className);
-        });
-        WinJS.Utilities.addClass(el, "notrunning");
-    }
-
-    function delay(seconds) {
-        var e = new Date().getTime() + (seconds * 1000);
-        while (new Date().getTime() <= e) { }
-    }
-})();
+        </span><span class="typ">WinJS</span><span class="pun">.</span><span class="typ">Utilities</span><span class="pun">.</span><span class="pln">addClass</span><span class="pun">(</span><span class="pln">el</span><span class="pun">,</span><span class="pln"> </span><span class="str">"scheduled"</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="kwd">function</span><span class="pln"> resetStatus</span><span class="pun">(</span><span class="pln">el</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="pun">[</span><span class="str">"notrunning"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"scheduled"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"running"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"joborder0"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"joborder1"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"joborder2"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"joborder3"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"joborder4"</span><span class="pun">].</span><span class="pln">forEach</span><span class="pun">(</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln">className</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="typ">WinJS</span><span class="pun">.</span><span class="typ">Utilities</span><span class="pun">.</span><span class="pln">removeClass</span><span class="pun">(</span><span class="pln">el</span><span class="pun">,</span><span class="pln"> className</span><span class="pun">);</span><span class="pln">
+        </span><span class="pun">});</span><span class="pln">
+        </span><span class="typ">WinJS</span><span class="pun">.</span><span class="typ">Utilities</span><span class="pun">.</span><span class="pln">addClass</span><span class="pun">(</span><span class="pln">el</span><span class="pun">,</span><span class="pln"> </span><span class="str">"notrunning"</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="kwd">function</span><span class="pln"> delay</span><span class="pun">(</span><span class="pln">seconds</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">var</span><span class="pln"> e </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Date</span><span class="pun">().</span><span class="pln">getTime</span><span class="pun">()</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="pun">(</span><span class="pln">seconds </span><span class="pun">*</span><span class="pln"> </span><span class="lit">1000</span><span class="pun">);</span><span class="pln">
+        </span><span class="kwd">while</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Date</span><span class="pun">().</span><span class="pln">getTime</span><span class="pun">()</span><span class="pln"> </span><span class="pun">&lt;=</span><span class="pln"> e</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">})();</span>
                     </pre>
                 </div>
                 <div class="clear"></div>

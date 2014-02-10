@@ -55,6 +55,9 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="common\codeformatting\codeformatting.css" />
+    <Content Include="common\codeformatting\codeformatting.html" />
+    <Content Include="common\codeformatting\codeformatting.js" />
     <Content Include="default.html" />
     <Content Include="images\40Banana.png" />
     <Content Include="images\60Banana.png" />
