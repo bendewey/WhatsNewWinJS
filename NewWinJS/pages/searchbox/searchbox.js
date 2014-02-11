@@ -13,10 +13,19 @@
     });
 
     function suggestionsRequestedHandler(eventObject) {
-        var queryText = eventObject.detail.queryText,
+        var request = eventObject.detail,
+            queryText = request.queryText,
             query = queryText.toLowerCase(),
-            suggestionCollection = eventObject.detail.searchSuggestionCollection;
+            suggestionCollection = request.searchSuggestionCollection;
+        //var request = new Windows.ApplicationModel.Search.SearchPaneSuggestionsRequest;
+        //var suggestinCol = new Windows.ApplicationModel.Search.SearchSuggestionCollection();
         if (queryText.length > 0) {
+            if (query[0] === 'b') {
+                var stream = Windows.Storage.Streams.RandomAccessStreamReference.createFromUri(new Windows.Foundation.Uri("ms-appx:///images/40Banana.png"));
+                suggestionCollection.appendResultSuggestion("Banana", "See full details on bananas", "banana", stream, "banana icon");
+                suggestionCollection.appendSearchSeparator('');
+            }
+
             for (var i = 0, len = suggestionList.length; i < len; i++) {
                 if (suggestionList[i].substr(0, query.length).toLowerCase() === query) {
                     suggestionCollection.appendQuerySuggestion(suggestionList[i]);
