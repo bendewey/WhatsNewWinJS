@@ -17,8 +17,7 @@
             queryText = request.queryText,
             query = queryText.toLowerCase(),
             suggestionCollection = request.searchSuggestionCollection;
-        //var request = new Windows.ApplicationModel.Search.SearchPaneSuggestionsRequest;
-        //var suggestinCol = new Windows.ApplicationModel.Search.SearchSuggestionCollection();
+
         if (queryText.length > 0) {
             if (query[0] === 'b') {
                 var stream = Windows.Storage.Streams.RandomAccessStreamReference.createFromUri(new Windows.Foundation.Uri("ms-appx:///images/40Banana.png"));
