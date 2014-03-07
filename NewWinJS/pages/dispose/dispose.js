@@ -35,8 +35,6 @@
             }
         });
 
-        WinJS.Navigation.history.backStack = WinJS.Navigation.history.backStack.slice(0, 0);
-        WinJS.Navigation.navigate('/pages/dispose/dispose.html');
-
+        WinJS.Navigation.history.backStack = WinJS.Navigation.history.backStack.slice(0, 1);
     }
 })();

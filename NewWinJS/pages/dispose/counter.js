@@ -28,6 +28,9 @@
                 },
                 dispose: function () {
                     count = 0;
+                    while (this._element.firstChild) {
+                        this._element.removeChild(this._element.firstChild);
+                    }
                 }
             }
         )
