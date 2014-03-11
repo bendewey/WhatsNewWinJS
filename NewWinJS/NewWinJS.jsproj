@@ -120,9 +120,6 @@
     <Content Include="js\google-code-prettify\prettyprint-html.js" />
     <Content Include="js\google-code-prettify\run_prettify.js" />
     <Content Include="js\navigator.js" />
-    <Content Include="pages\navigation\navigation.css" />
-    <Content Include="pages\navigation\navigation.html" />
-    <Content Include="pages\navigation\navigation.js" />
     <Content Include="pages\dispose\counter.js" />
     <Content Include="pages\dispose\dispose.css" />
     <Content Include="pages\dispose\dispose.html" />
