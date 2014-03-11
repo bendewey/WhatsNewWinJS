@@ -124,6 +124,9 @@
     <Content Include="pages\dispose\dispose.css" />
     <Content Include="pages\dispose\dispose.html" />
     <Content Include="pages\dispose\dispose.js" />
+    <Content Include="pages\webview\webview.css" />
+    <Content Include="pages\webview\webview.html" />
+    <Content Include="pages\webview\webview.js" />
     <Content Include="pages\scheduler\scheduler.css" />
     <Content Include="pages\scheduler\scheduler.html" />
     <Content Include="pages\scheduler\scheduler.js" />
