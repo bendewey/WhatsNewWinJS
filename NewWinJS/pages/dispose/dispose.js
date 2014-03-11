@@ -2,8 +2,6 @@
 (function () {
     "use strict";
 
-    var disposeOnNavigation;
-
     WinJS.UI.Pages.define("/pages/dispose/dispose.html", {
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
@@ -14,6 +12,12 @@
             element.querySelector(".navigate").addEventListener("click", navigate);
             element.querySelector(".addControl").addEventListener("click", addControl.bind(this));
             element.querySelector(".dispose").addEventListener("click", disposeHandler.bind(this));
+            this.updateDisposeLabel();
+        },
+
+        updateDisposeLabel: function () {
+            var dispose = this._element.querySelector(".dispose");
+            dispose.innerText = NewWinJS.markDisposable ? "Mark Non-Disposable" : "Mark Disposable";
         }
     });
 
@@ -28,13 +32,11 @@
     }
 
     function disposeHandler() {
-        var container = this._element.querySelector(".counterContainer");
-        WinJS.Utilities.children(container).forEach(function(child) {
-            if (child.winControl && child.winControl.dispose) {
-                child.winControl.dispose();
-            }
-        });
+        NewWinJS.markDisposable = !NewWinJS.markDisposable;
+        this.updateDisposeLabel();
 
         WinJS.Navigation.history.backStack = WinJS.Navigation.history.backStack.slice(0, 1);
     }
+
+    
 })();

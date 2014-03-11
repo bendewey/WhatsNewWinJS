@@ -28,7 +28,7 @@
                 <div class="democontent">
                     <h2>Dispose</h2>
 
-                    <button class="dispose">Dispose</button>
+                    <button class="dispose">Mark Disposable</button>
 
                     <hr />
                     
@@ -42,7 +42,7 @@
                 <div class="codecontent">
                     <h2>dispose.html</h2>
                     <pre class="prettyprint">
-&lt;button class="dispose"&gt;Dispose&lt;/button&gt;
+&lt;button class="dispose"&gt;Mark Dispose&lt;/button&gt;
 
 &lt;hr /&gt;
 
@@ -58,12 +58,15 @@
     </span><span class="str">"use strict"</span><span class="pun">;</span><span class="pln">
     </span><span class="kwd">var</span><span class="pln"> count </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
     </span><span class="typ">WinJS</span><span class="pun">.</span><span class="typ">Namespace</span><span class="pun">.</span><span class="pln">define</span><span class="pun">(</span><span class="str">"NewWinJS"</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        markDisposable</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
         </span><span class="typ">Counter</span><span class="pun">:</span><span class="pln"> </span><span class="typ">WinJS</span><span class="pun">.</span><span class="typ">Class</span><span class="pun">.</span><span class="pln">define</span><span class="pun">(</span><span class="pln">
             </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln">element</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
                 </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">_element </span><span class="pun">=</span><span class="pln"> element </span><span class="pun">||</span><span class="pln"> document</span><span class="pun">.</span><span class="pln">createElement</span><span class="pun">(</span><span class="str">"div"</span><span class="pun">);</span><span class="pln">
                 </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">_element</span><span class="pun">.</span><span class="pln">winControl </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">;</span><span class="pln">
                 </span><span class="com">//using this class auto activates dispose when tree is disposing</span><span class="pln">
-                </span><span class="com">//WinJS.Utilities.addClass(this._element, "win-disposable");</span><span class="pln">
+                </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="typ">NewWinJS</span><span class="pun">.</span><span class="pln">markDisposable</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    </span><span class="typ">WinJS</span><span class="pun">.</span><span class="typ">Utilities</span><span class="pun">.</span><span class="pln">addClass</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">.</span><span class="pln">_element</span><span class="pun">,</span><span class="pln"> </span><span class="str">"win-disposable"</span><span class="pun">);</span><span class="pln">
+                </span><span class="pun">}</span><span class="pln">
                 </span><span class="com">// create all sub-controls</span><span class="pln">
                 </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">_createSubControls</span><span class="pun">();</span><span class="pln">
             </span><span class="pun">},</span><span class="pln">
@@ -91,7 +94,6 @@
                     <pre class="prettyprinted">
 <span class="pun">(</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
     </span><span class="str">"use strict"</span><span class="pun">;</span><span class="pln">
-    </span><span class="kwd">var</span><span class="pln"> disposeOnNavigation</span><span class="pun">;</span><span class="pln">
     </span><span class="typ">WinJS</span><span class="pun">.</span><span class="pln">UI</span><span class="pun">.</span><span class="typ">Pages</span><span class="pun">.</span><span class="pln">define</span><span class="pun">(</span><span class="str">"/pages/dispose/dispose.html"</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
         </span><span class="com">// This function is called whenever a user navigates to this page. It</span><span class="pln">
         </span><span class="com">// populates the page elements with the app's data.</span><span class="pln">
@@ -101,6 +103,11 @@
             element</span><span class="pun">.</span><span class="pln">querySelector</span><span class="pun">(</span><span class="str">".navigate"</span><span class="pun">).</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="str">"click"</span><span class="pun">,</span><span class="pln"> navigate</span><span class="pun">);</span><span class="pln">
             element</span><span class="pun">.</span><span class="pln">querySelector</span><span class="pun">(</span><span class="str">".addControl"</span><span class="pun">).</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="str">"click"</span><span class="pun">,</span><span class="pln"> addControl</span><span class="pun">.</span><span class="pln">bind</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">));</span><span class="pln">
             element</span><span class="pun">.</span><span class="pln">querySelector</span><span class="pun">(</span><span class="str">".dispose"</span><span class="pun">).</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="str">"click"</span><span class="pun">,</span><span class="pln"> disposeHandler</span><span class="pun">.</span><span class="pln">bind</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">));</span><span class="pln">
+            </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">updateDisposeLabel</span><span class="pun">();</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln">
+        updateDisposeLabel</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="kwd">var</span><span class="pln"> dispose </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">_element</span><span class="pun">.</span><span class="pln">querySelector</span><span class="pun">(</span><span class="str">".dispose"</span><span class="pun">);</span><span class="pln">
+            dispose</span><span class="pun">.</span><span class="pln">innerText </span><span class="pun">=</span><span class="pln"> </span><span class="typ">NewWinJS</span><span class="pun">.</span><span class="pln">markDisposable </span><span class="pun">?</span><span class="pln"> </span><span class="str">"Mark Non-Disposable"</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">"Mark Disposable"</span><span class="pun">;</span><span class="pln">
         </span><span class="pun">}</span><span class="pln">
     </span><span class="pun">});</span><span class="pln">
     </span><span class="kwd">function</span><span class="pln"> navigate</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
@@ -112,14 +119,9 @@
         container</span><span class="pun">.</span><span class="pln">appendChild</span><span class="pun">(</span><span class="pln">control</span><span class="pun">.</span><span class="pln">element</span><span class="pun">);</span><span class="pln">
     </span><span class="pun">}</span><span class="pln">
     </span><span class="kwd">function</span><span class="pln"> disposeHandler</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
-        </span><span class="kwd">var</span><span class="pln"> container </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">_element</span><span class="pun">.</span><span class="pln">querySelector</span><span class="pun">(</span><span class="str">".counterContainer"</span><span class="pun">);</span><span class="pln">
-        </span><span class="typ">WinJS</span><span class="pun">.</span><span class="typ">Utilities</span><span class="pun">.</span><span class="pln">children</span><span class="pun">(</span><span class="pln">container</span><span class="pun">).</span><span class="pln">forEach</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">child</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
-            </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">child</span><span class="pun">.</span><span class="pln">winControl </span><span class="pun">&amp;&amp;</span><span class="pln"> child</span><span class="pun">.</span><span class="pln">winControl</span><span class="pun">.</span><span class="pln">dispose</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
-                child</span><span class="pun">.</span><span class="pln">winControl</span><span class="pun">.</span><span class="pln">dispose</span><span class="pun">();</span><span class="pln">
-            </span><span class="pun">}</span><span class="pln">
-        </span><span class="pun">});</span><span class="pln">
-        </span><span class="typ">WinJS</span><span class="pun">.</span><span class="typ">Navigation</span><span class="pun">.</span><span class="pln">history</span><span class="pun">.</span><span class="pln">backStack </span><span class="pun">=</span><span class="pln"> </span><span class="typ">WinJS</span><span class="pun">.</span><span class="typ">Navigation</span><span class="pun">.</span><span class="pln">history</span><span class="pun">.</span><span class="pln">backStack</span><span class="pun">.</span><span class="pln">slice</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">);</span><span class="pln">
-        </span><span class="typ">WinJS</span><span class="pun">.</span><span class="typ">Navigation</span><span class="pun">.</span><span class="pln">navigate</span><span class="pun">(</span><span class="str">'/pages/dispose/dispose.html'</span><span class="pun">);</span><span class="pln">
+        </span><span class="typ">NewWinJS</span><span class="pun">.</span><span class="pln">markDisposable </span><span class="pun">=</span><span class="pln"> </span><span class="pun">!</span><span class="typ">NewWinJS</span><span class="pun">.</span><span class="pln">markDisposable</span><span class="pun">;</span><span class="pln">
+        </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">updateDisposeLabel</span><span class="pun">();</span><span class="pln">
+        </span><span class="typ">WinJS</span><span class="pun">.</span><span class="typ">Navigation</span><span class="pun">.</span><span class="pln">history</span><span class="pun">.</span><span class="pln">backStack </span><span class="pun">=</span><span class="pln"> </span><span class="typ">WinJS</span><span class="pun">.</span><span class="typ">Navigation</span><span class="pun">.</span><span class="pln">history</span><span class="pun">.</span><span class="pln">backStack</span><span class="pun">.</span><span class="pln">slice</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">);</span><span class="pln">
     </span><span class="pun">}</span><span class="pln">
 </span><span class="pun">})();</span>
                     </pre>

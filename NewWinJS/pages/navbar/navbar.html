@@ -30,8 +30,8 @@
                     
                     <!-- Create NavBar -->
                     <!-- BEGINTEMPLATE: Template code for an NavBar -->
-                    <div id="createNavBar" data-win-control="WinJS.UI.NavBar">
-                        <div data-win-control="WinJS.UI.NavBarContainer">
+                    <div data-win-control="WinJS.UI.NavBar">
+                        <div id="mainNavBarContainer" data-win-control="WinJS.UI.NavBarContainer">
                             <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{ label: 'Home', icon: 'url(/images/40Banana.png)' }"></div>
                             <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{ label: 'Favorite', icon: 'favorite' }"></div>
                             <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{ label: 'Your account', icon: 'people' }"></div>
@@ -40,6 +40,13 @@
                             <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{ label: 'Photos', icon: 'camera' }"></div>
                             <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{ label: 'Settings', icon: 'settings' }"></div>
                         </div>
+                        <div id="videoNavBarContainer" data-win-control="WinJS.UI.NavBarContainer" style="display:none;">
+                            <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{ label: 'Video 1', icon: 'video' }"></div>
+                            <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{ label: 'Video 2', icon: 'video' }"></div>
+                            <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{ label: 'Video 3', icon: 'video' }"></div>
+                            <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{ label: 'Video 4', icon: 'video' }"></div>
+                            <div data-win-control="WinJS.UI.NavBarCommand" data-win-options="{ label: 'Video 5', icon: 'video' }"></div>
+                        </div>
                     </div> 
                     <!-- ENDTEMPLATE -->
 
@@ -47,25 +54,38 @@
                 <hr />
                 <div class="codecontent">
                     <h2>navbar.html</h2>
-                    <pre class="prettyprint">
-&lt;div id="createNavBar" data-win-control="WinJS.UI.NavBar"&gt;
-	&lt;div data-win-control="WinJS.UI.NavBarContainer"&gt;
-		&lt;div data-win-control="WinJS.UI.NavBarCommand" 
-                data-win-options="{ label: 'Home', icon: 'url(/images/40Banana.png)' }"&gt;&lt;/div&gt;
-		&lt;div data-win-control="WinJS.UI.NavBarCommand" 
-                data-win-options="{ label: 'Favorite', icon: 'favorite' }"&gt;&lt;/div&gt;
-		&lt;div data-win-control="WinJS.UI.NavBarCommand" 
-                data-win-options="{ label: 'Your account', icon: 'people' }"&gt;&lt;/div&gt;
-		&lt;div data-win-control="WinJS.UI.NavBarCommand" 
-                data-win-options="{ label: 'Music', icon: 'audio' }"&gt;&lt;/div&gt;
-		&lt;div data-win-control="WinJS.UI.NavBarCommand" 
-                data-win-options="{ label: 'Video', icon: 'video', splitButton: 'true' }"&gt;&lt;/div&gt;
-		&lt;div data-win-control="WinJS.UI.NavBarCommand" 
-                data-win-options="{ label: 'Photos', icon: 'camera' }"&gt;&lt;/div&gt;
-		&lt;div data-win-control="WinJS.UI.NavBarCommand" 
-                data-win-options="{ label: 'Settings', icon: 'settings' }"&gt;&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt; 
+                    <pre class="prettyprinted">
+<span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-win-control</span><span class="pun">=</span><span class="atv">"WinJS.UI.NavBar"</span><span class="tag">&gt;</span><span class="pln">
+    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"mainNavBarContainer"</span><span class="pln"> </span><span class="atn">data-win-control</span><span class="pun">=</span><span class="atv">"WinJS.UI.NavBarContainer"</span><span class="tag">&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-win-control</span><span class="pun">=</span><span class="atv">"WinJS.UI.NavBarCommand"</span><span class="pln"> </span>
+            <span class="atn">data-win-options</span><span class="pun">=</span><span class="atv">"{ label: 'Home', icon: 'url(/images/40Banana.png)' }"</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-win-control</span><span class="pun">=</span><span class="atv">"WinJS.UI.NavBarCommand"</span><span class="pln"> </span>
+            <span class="atn">data-win-options</span><span class="pun">=</span><span class="atv">"{ label: 'Favorite', icon: 'favorite' }"</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-win-control</span><span class="pun">=</span><span class="atv">"WinJS.UI.NavBarCommand"</span><span class="pln"> </span>
+            <span class="atn">data-win-options</span><span class="pun">=</span><span class="atv">"{ label: 'Your account', icon: 'people' }"</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-win-control</span><span class="pun">=</span><span class="atv">"WinJS.UI.NavBarCommand"</span><span class="pln"> </span>
+            <span class="atn">data-win-options</span><span class="pun">=</span><span class="atv">"{ label: 'Music', icon: 'audio' }"</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-win-control</span><span class="pun">=</span><span class="atv">"WinJS.UI.NavBarCommand"</span><span class="pln"> </span>
+            <span class="atn">data-win-options</span><span class="pun">=</span><span class="atv">"{ label: 'Video', icon: 'video', splitButton: 'true' }"</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-win-control</span><span class="pun">=</span><span class="atv">"WinJS.UI.NavBarCommand"</span><span class="pln"> </span>
+            <span class="atn">data-win-options</span><span class="pun">=</span><span class="atv">"{ label: 'Photos', icon: 'camera' }"</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-win-control</span><span class="pun">=</span><span class="atv">"WinJS.UI.NavBarCommand"</span><span class="pln"> </span>
+            <span class="atn">data-win-options</span><span class="pun">=</span><span class="atv">"{ label: 'Settings', icon: 'settings' }"</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/div&gt;</span><span class="pln">
+    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"videoNavBarContainer"</span><span class="pln"> </span><span class="atn">data-win-control</span><span class="pun">=</span><span class="atv">"WinJS.UI.NavBarContainer"</span><span class="pln"> </span>
+            <span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">display</span><span class="pun">:</span><span class="pln">none</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-win-control</span><span class="pun">=</span><span class="atv">"WinJS.UI.NavBarCommand"</span><span class="pln"> </span>
+            <span class="atn">data-win-options</span><span class="pun">=</span><span class="atv">"{ label: 'Video 1', icon: 'video' }"</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-win-control</span><span class="pun">=</span><span class="atv">"WinJS.UI.NavBarCommand"</span><span class="pln"> </span>
+            <span class="atn">data-win-options</span><span class="pun">=</span><span class="atv">"{ label: 'Video 2', icon: 'video' }"</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-win-control</span><span class="pun">=</span><span class="atv">"WinJS.UI.NavBarCommand"</span><span class="pln"> </span>
+            <span class="atn">data-win-options</span><span class="pun">=</span><span class="atv">"{ label: 'Video 3', icon: 'video' }"</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-win-control</span><span class="pun">=</span><span class="atv">"WinJS.UI.NavBarCommand"</span><span class="pln"> </span>
+            <span class="atn">data-win-options</span><span class="pun">=</span><span class="atv">"{ label: 'Video 4', icon: 'video' }"</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-win-control</span><span class="pun">=</span><span class="atv">"WinJS.UI.NavBarCommand"</span><span class="pln"> </span>
+            <span class="atn">data-win-options</span><span class="pun">=</span><span class="atv">"{ label: 'Video 5', icon: 'video' }"</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/div&gt;</span><span class="pln">
+</span><span class="tag">&lt;/div&gt;</span>
                     </pre>
                 </div>
                 <div class="clear"></div>
